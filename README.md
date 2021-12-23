@@ -15,12 +15,12 @@ You should fulfill the concepts of:
 In this application, there are two different types of car rental: commercial and individual. Commercial
 rental is on a monthly basis and individual rental is on a daily basis. The price is calculated as follow:
 
-daily_price=model_base_price*model-year-ratio
+daily_price=model_base_price*model-year-ratio\n
 
-Model Year       Model Year Ratio
-2022                      1
-2020 - 2021            0.95
-2017 - 2019             0.9
+Model Year       Model Year Ratio \n
+2022                      1\n
+2020 - 2021            0.95\n
+2017 - 2019             0.9\n
 
 *Please note that discount is available for both individual and commercial customers.
 Individual customers rent on a daily basis. The customer may have membership or rent without
