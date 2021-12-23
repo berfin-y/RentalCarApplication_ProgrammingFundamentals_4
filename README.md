@@ -92,11 +92,11 @@ a. If customer ID format is not appropriate for customer types, necessary except
 should be thrown. (You should think about the exceptions.)
 
 2. Calculate the price of the rentals.
-3. 
-4. Generate a 7-digit integer rental code for each rental.
-5. 
-6. The application should calculate some rental statistics as follow:
-7. 
+
+3. Generate a 7-digit integer rental code for each rental.
+
+4. The application should calculate some rental statistics as follow:
+
 a. Total number of cars rented
 
 b. Total number of commercial rentals
