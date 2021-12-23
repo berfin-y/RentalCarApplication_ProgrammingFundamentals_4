@@ -26,7 +26,7 @@ daily_price=model_base_price*model-year-ratio
 
 Model Year--------Model Year Ratio 
 
-2022---------------------1
+2022----------------------1
 
 2020 - 2021------------0.95
 
@@ -55,9 +55,9 @@ Table 1. Discount Table
 
 Customer Type-----Discount
 
-Silver--------------20%
+Silver----------------20%
 
-Gold----------------25%
+Gold-----------------25%
 
 Platinum------------30%
 
