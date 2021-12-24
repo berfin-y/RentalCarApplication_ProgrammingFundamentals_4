@@ -25,7 +25,7 @@ public class FileIo implements Serializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return lines;
+        return new ArrayList<>(lines);
     }
 
 }
