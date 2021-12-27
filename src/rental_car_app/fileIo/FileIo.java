@@ -18,9 +18,11 @@ public class FileIo implements Serializable {
             Scanner scanner = new Scanner(new File(FILE_NAME));
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                lines.add(line);
-                scanner.close();
+                if (!line.equals("")) {
+                    lines.add(line);
+                }
             }
+            scanner.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,15 +1,32 @@
 package rental_car_app.customer;
 
-public class CustomerId<T extends ICustomer> {
+public class CustomerId<T> {
+    T id;
 
-    private T customerType;
-
-    public CustomerId(T customerType){
-        this.customerType = customerType;
+    public CustomerId(){
+        this(null);
+    }
+    public CustomerId(T id){
+        this.id = id;
     }
 
-    public boolean checkCustomerId(){
-        return customerType.checkId();
+    public T getId(){
+        return id;
     }
 
+    public boolean equals(Object other){
+        if (other == null){
+            return false;
+        }else if (this.getClass() != other.getClass()){
+            return false;
+        }else{
+            CustomerId<T> otherCustomerId = (CustomerId<T>) other;
+            return id.equals(otherCustomerId.id);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return " " + id;
+    }
 }

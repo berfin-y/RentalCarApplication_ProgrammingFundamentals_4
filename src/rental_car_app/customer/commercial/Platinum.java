@@ -1,21 +1,24 @@
 package rental_car_app.customer.commercial;
 
+import rental_car_app.customer.CustomerId;
+import rental_car_app.customer_id_exception.CustomerIdException;
+
 public class Platinum extends Commercial{
 
     public Platinum(){
-        this("P0000000", 0, "", 0,0);
+        this(new CustomerId<String>("P0000000"), 0, "", 0,0);
         super.setDiscount(0.25);
     }
 
-    public Platinum(String id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
+    public Platinum(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(id, numberOfDays, carModel, carModelYear, modelBasePrice);
     }
     public Platinum(Platinum platinum){
-        this(platinum.getId(), platinum.getNumberOfDays(), platinum.getCarModel(), platinum.getCarModelYear(), platinum.getModelBasePrice());
+        this(new CustomerId<String>(platinum.getId()), platinum.getNumberOfDays(), platinum.getCarModel(), platinum.getCarModelYear(), platinum.getModelBasePrice());
     }
 
     public Platinum(String[] info){
-        this(info[0], Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
     }
     public boolean equals(Object other){
         if (other == null){
@@ -31,6 +34,9 @@ public class Platinum extends Commercial{
                     (this.getModelBasePrice() == otherPlatinum.getModelBasePrice());
         }
     }
+    public String toString(){
+        return super.toString();
+    }
 
     @Override
     public double calculatePrice() {
@@ -39,6 +45,14 @@ public class Platinum extends Commercial{
 
     @Override
     public boolean checkId() {
-        return false;
+        try{
+            if (false){ //exception fırlatması gereken durum
+                throw new CustomerIdException();
+            }
+            return true;
+        }catch (CustomerIdException e){
+            return false;
+        }
+
     }
 }

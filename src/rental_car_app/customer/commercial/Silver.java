@@ -1,21 +1,24 @@
 package rental_car_app.customer.commercial;
 
+import rental_car_app.customer.CustomerId;
+import rental_car_app.customer_id_exception.CustomerIdException;
+
 public class Silver extends Commercial{
 
     public Silver(){
-        this("S0000000", 0, "", 0,0);
+        this(new CustomerId<String>("S0000000"), 0, "", 0,0);
         super.setDiscount(0.3);
     }
 
-    public Silver(String id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
+    public Silver(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(id, numberOfDays, carModel, carModelYear, modelBasePrice);
     }
     public Silver(Silver silver){
-        this(silver.getId(), silver.getNumberOfDays(), silver.getCarModel(), silver.getCarModelYear(), silver.getModelBasePrice());
+        this(new CustomerId<String>(silver.getId()), silver.getNumberOfDays(), silver.getCarModel(), silver.getCarModelYear(), silver.getModelBasePrice());
     }
 
     public Silver(String[] info){
-        this(info[0], Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
     }
     public boolean equals(Object other){
         if (other == null){
@@ -32,6 +35,9 @@ public class Silver extends Commercial{
         }
     }
 
+    public String toString(){
+        return super.toString();
+    }
 
     @Override
     public double calculatePrice() {
@@ -40,6 +46,14 @@ public class Silver extends Commercial{
 
     @Override
     public boolean checkId() {
-        return false;
+
+        try{
+            if (false){ //exception fırlatması gereken durum
+                throw new CustomerIdException();
+            }
+            return true;
+        }catch (CustomerIdException e){
+            return false;
+        }
     }
 }

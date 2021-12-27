@@ -1,16 +1,16 @@
 package rental_car_app.customer.commercial;
-
 import rental_car_app.customer.Customer;
+import rental_car_app.customer.CustomerId;
 
 public abstract class Commercial extends Customer implements ICommercial{
 
-    private String id;
+    private CustomerId<String> id;
 
     public Commercial(){
-        this("",0,"",0,0);
+        this(new CustomerId<String>(),0,"",0,0.0);
     }
 
-    public Commercial(String id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
+    public Commercial(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(numberOfDays,carModel,carModelYear,modelBasePrice);
         this.id = id;
     }
@@ -20,7 +20,7 @@ public abstract class Commercial extends Customer implements ICommercial{
     }
 
     public String getId(){
-        return this.id;
+        return this.id.getId();
     }
 
     public boolean equals(Object other){
@@ -39,7 +39,7 @@ public abstract class Commercial extends Customer implements ICommercial{
     }
 
     public String toString(){
-        return this.id + "     " + super.toString();
+        return this.id.toString() + "     " + super.toString();
     }
 
     @Override
