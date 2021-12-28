@@ -54,7 +54,7 @@ public class Membership  extends Individual {
     public boolean checkId() {
 
         try{
-            if (false){ //exception fırlatması gereken durum
+            if (this.getId().length() != 12){
                 throw new CustomerIdException();
             }
             return true;

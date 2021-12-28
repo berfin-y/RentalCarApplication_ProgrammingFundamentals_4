@@ -48,7 +48,7 @@ public class Gold extends Commercial{
     public boolean checkId()
     {
         try{
-            if (false){ //exception fırlatması gereken durum
+            if (this.getId().length() != 8){
                 throw new CustomerIdException();
             }
             return true;

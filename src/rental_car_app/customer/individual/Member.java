@@ -53,7 +53,7 @@ public class Member extends Individual {
     @Override
     public boolean checkId() {
         try{
-            if (false){ //exception fırlatması gereken durum
+            if (this.getId().toString().length() != 11){
                 throw new CustomerIdException();
             }
             return true;
