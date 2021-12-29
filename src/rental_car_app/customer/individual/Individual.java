@@ -10,6 +10,7 @@ public abstract class Individual extends Customer implements IIndividual {
     public Individual(int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(numberOfDays, carModel, carModelYear, modelBasePrice);
     }
+    
 
     public boolean equals(Object other){
         if (other == null){
@@ -27,6 +28,13 @@ public abstract class Individual extends Customer implements IIndividual {
 
     public String toString(){
         return super.toString();
+    }
+    
+    public boolean isMember() {
+    	if (this.getId().toString().startsWith("M")) {
+    		return true;
+    	}
+    	return false;
     }
 
     @Override

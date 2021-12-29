@@ -8,6 +8,7 @@ public abstract class Customer implements ICustomer {
     private String carModel;
     private int rentalCode;
     private double discount;
+    private double rentalPrice;
 
     public Customer(){
         this(0,"",0,0.0);
@@ -42,6 +43,10 @@ public abstract class Customer implements ICustomer {
 
     public double getDiscount() {
         return discount;
+    }
+    
+    public double getRentalPrice() {
+    	return rentalPrice;
     }
 
     public String toString(){
@@ -81,4 +86,10 @@ public abstract class Customer implements ICustomer {
     public void setDiscount(double discount) {
         this.discount = discount;
     }
+    
+    public void setRentalPrice(double rentalPrice) {
+    	this.rentalPrice=rentalPrice;
+    }
+    
+    
 }

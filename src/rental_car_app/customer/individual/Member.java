@@ -3,14 +3,15 @@ package rental_car_app.customer.individual;
 import rental_car_app.customer.CustomerId;
 import rental_car_app.customer_id_exception.CustomerIdException;
 
-public class Member extends Individual {
-    private CustomerId<Long> id;
+public class Member  extends Individual {
+
+    private CustomerId<String> id;
 
     public Member(){
-        this(new CustomerId<Long>(00000000000L),0,"",0,0.0);
+        this(new CustomerId<String>("M0000000000"),0,"",0,0.0);
     }
 
-    public Member(CustomerId<Long> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
+    public Member(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(numberOfDays, carModel, carModelYear, modelBasePrice);
         this.id = id;
     }
@@ -19,11 +20,7 @@ public class Member extends Individual {
     }
 
     public Member(String[] info){
-        this(new CustomerId<Long>(Long.parseLong(info[0])), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
-    }
-
-    public Long getId(){
-        return this.id.getId();
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
     }
 
     public boolean equals(Object other){
@@ -32,17 +29,20 @@ public class Member extends Individual {
         }else if (other.getClass() != this.getClass()){
             return false;
         }else{
-            Member otherMember = (Member) other;
-            return (this.getNumberOfDays() == otherMember.getNumberOfDays()) &&
-                    (this.getCarModel().equals(otherMember.getCarModel()))  &&
-                    (this.getCarModelYear() == otherMember.getCarModelYear()) &&
-                    (this.getModelBasePrice() == otherMember.getModelBasePrice());
+        	Member otherMembership = (Member) other;
+            return (this.getNumberOfDays() == otherMembership.getNumberOfDays()) &&
+                    (this.getCarModel().equals(otherMembership.getCarModel()))  &&
+                    (this.getCarModelYear() == otherMembership.getCarModelYear()) &&
+                    (this.getModelBasePrice() == otherMembership.getModelBasePrice());
         }
     }
-
     @Override
     public String toString() {
         return this.id.toString() + "     " + super.toString();
+    }
+
+    public String getId(){
+        return this.id.getId();
     }
 
     @Override
@@ -52,8 +52,9 @@ public class Member extends Individual {
 
     @Override
     public boolean checkId() {
+
         try{
-            if (this.getId().toString().length() != 11){
+            if (this.getId().length() != 12){
                 throw new CustomerIdException();
             }
             return true;
@@ -61,4 +62,6 @@ public class Member extends Individual {
             return false;
         }
     }
+    
+
 }
