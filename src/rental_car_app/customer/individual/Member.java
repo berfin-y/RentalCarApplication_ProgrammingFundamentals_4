@@ -8,20 +8,19 @@ public class Member  extends Individual {
     private CustomerId<String> id;
 
     public Member(){
-        this(new CustomerId<String>("M0000000000"),0,"",0,0.0);
+        this(new CustomerId<String>("M0000000000"),0,"",0,0.0,0.1);
     }
 
-    public Member(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(numberOfDays, carModel, carModelYear, modelBasePrice);
-        super.setDiscount(0.1);
+    public Member(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice,double discount){
+        super(numberOfDays, carModel, carModelYear, modelBasePrice,discount);
         this.id = id;
     }
     public Member(Member member){
-        this(member.id,member.getNumberOfDays(),member.getCarModel(), member.getCarModelYear(), member.getModelBasePrice());
+        this(member.id,member.getNumberOfDays(),member.getCarModel(), member.getCarModelYear(), member.getModelBasePrice(),member.getDiscount());
     }
 
     public Member(String[] info){
-        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]),0.1);
     }
 
     public boolean equals(Object other){

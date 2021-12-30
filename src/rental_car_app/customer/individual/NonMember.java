@@ -7,19 +7,19 @@ public class NonMember extends Individual {
     private CustomerId<Long> id;
 
     public NonMember(){
-        this(new CustomerId<Long>(00000000000L),0,"",0,0.0);
+        this(new CustomerId<Long>(00000000000L),0,"",0,0.0,0.0);
     }
 
-    public NonMember(CustomerId<Long> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(numberOfDays, carModel, carModelYear, modelBasePrice);
+    public NonMember(CustomerId<Long> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice, double discount){
+        super(numberOfDays, carModel, carModelYear, modelBasePrice,discount);
         this.id = id;
     }
     public NonMember(NonMember nonMember){
-        this(nonMember.id,nonMember.getNumberOfDays(),nonMember.getCarModel(), nonMember.getCarModelYear(), nonMember.getModelBasePrice());
+        this(nonMember.id,nonMember.getNumberOfDays(),nonMember.getCarModel(), nonMember.getCarModelYear(), nonMember.getModelBasePrice(),nonMember.getDiscount());
     }
 
     public NonMember(String[] info){
-        this(new CustomerId<Long>(Long.parseLong(info[0])), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<Long>(Long.parseLong(info[0])), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]),0.0);
     }
 
     public Long getId(){

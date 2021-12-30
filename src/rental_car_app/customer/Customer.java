@@ -11,18 +11,19 @@ public abstract class Customer implements ICustomer {
     private double rentalPrice;
 
     public Customer(){
-        this(0,"",0,0.0);
+        this(0,"",0,0.0,0.0);
     }
 
-    public Customer(int numberOfDays, String carModel, int carModelYear, double modelBasePrice) {
+    public Customer(int numberOfDays, String carModel, int carModelYear, double modelBasePrice,double discount) {
         this.numberOfDays = numberOfDays;
         this.carModel = carModel;
         this.carModelYear = carModelYear;
         this.modelBasePrice = modelBasePrice;
+        this.discount = discount;
     }
 
     public Customer(Customer customer){
-        this(customer.numberOfDays,customer.carModel,customer.carModelYear,customer.modelBasePrice);
+        this(customer.numberOfDays,customer.carModel,customer.carModelYear,customer.modelBasePrice,customer.discount);
     }
 
     public double getModelBasePrice() {

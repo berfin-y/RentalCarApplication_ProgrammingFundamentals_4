@@ -8,16 +8,17 @@ public abstract class Commercial extends Customer implements ICommercial{
     private CustomerId<String> id;
 
     public Commercial(){
-        this(new CustomerId<String>(),0,"",0,0.0);
+        this(new CustomerId<String>(),0,"",0,0.0,0.0);
     }
 
-    public Commercial(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(numberOfDays,carModel,carModelYear,modelBasePrice);
+    public Commercial(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice, double discount){
+        super(numberOfDays,carModel,carModelYear,modelBasePrice,discount);
         this.id = id;
     }
 
     public Commercial(Commercial commercial){
-        this(commercial.id,commercial.getNumberOfDays(),commercial.getCarModel(),commercial.getCarModelYear(),commercial.getModelBasePrice());
+        this(commercial.id,commercial.getNumberOfDays(),commercial.getCarModel(),
+        		commercial.getCarModelYear(),commercial.getModelBasePrice(),commercial.getDiscount());
     }
 
     public String getId(){

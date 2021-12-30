@@ -6,19 +6,19 @@ import rental_car_app.customer_id_exception.CustomerIdException;
 public class Platinum extends Commercial{
 
     public Platinum(){
-        this(new CustomerId<String>("P0000000"), 0, "", 0,0);
-        super.setDiscount(0.3);
+        this(new CustomerId<String>("P0000000"), 0, "", 0,0,0.3);
     }
 
-    public Platinum(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(id, numberOfDays, carModel, carModelYear, modelBasePrice);
+    public Platinum(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice,double discount){
+        super(id, numberOfDays, carModel, carModelYear, modelBasePrice,discount);
     }
     public Platinum(Platinum platinum){
-        this(new CustomerId<String>(platinum.getId()), platinum.getNumberOfDays(), platinum.getCarModel(), platinum.getCarModelYear(), platinum.getModelBasePrice());
+        this(new CustomerId<String>(platinum.getId()), platinum.getNumberOfDays(), platinum.getCarModel(),
+        		platinum.getCarModelYear(), platinum.getModelBasePrice(),platinum.getDiscount());
     }
 
     public Platinum(String[] info){
-        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]),0.3);
     }
     public boolean equals(Object other){
         if (other == null){

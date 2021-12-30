@@ -6,19 +6,20 @@ import rental_car_app.customer_id_exception.CustomerIdException;
 public class Gold extends Commercial{
 
     public Gold(){
-        this(new CustomerId<String>("G0000000"),0,"",0,0);
+        this(new CustomerId<String>("G0000000"),0,"",0,0,0.0);
     }
 
-    public Gold(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(id, numberOfDays, carModel, carModelYear, modelBasePrice);
+    public Gold(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice, double discount){
+        super(id, numberOfDays, carModel, carModelYear, modelBasePrice,discount);
         super.setDiscount(0.25);
     }
     public Gold(Gold gold){
-        this(new CustomerId<String>(gold.getId()), gold.getNumberOfDays(), gold.getCarModel(), gold.getCarModelYear(), gold.getModelBasePrice());
+        this(new CustomerId<String>(gold.getId()), gold.getNumberOfDays(), gold.getCarModel(),
+        		gold.getCarModelYear(), gold.getModelBasePrice(),gold.getDiscount());
     }
 
     public Gold(String[] info){
-        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]),0.0);
     }
     public boolean equals(Object other){
         if (other == null){

@@ -6,19 +6,19 @@ import rental_car_app.customer_id_exception.CustomerIdException;
 public class Silver extends Commercial{
 
     public Silver(){
-        this(new CustomerId<String>("S0000000"), 0, "", 0,0);
-        super.setDiscount(0.2);
+        this(new CustomerId<String>("S0000000"), 0, "", 0,0,0.2);
     }
 
-    public Silver(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(id, numberOfDays, carModel, carModelYear, modelBasePrice);
+    public Silver(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice, double discount){
+        super(id, numberOfDays, carModel, carModelYear, modelBasePrice,discount);
     }
     public Silver(Silver silver){
-        this(new CustomerId<String>(silver.getId()), silver.getNumberOfDays(), silver.getCarModel(), silver.getCarModelYear(), silver.getModelBasePrice());
+        this(new CustomerId<String>(silver.getId()), silver.getNumberOfDays(), silver.getCarModel(), 
+        		silver.getCarModelYear(), silver.getModelBasePrice(),silver.getDiscount());
     }
 
     public Silver(String[] info){
-        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]));
+        this(new CustomerId<String>(info[0]), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]),0.2);
     }
     public boolean equals(Object other){
         if (other == null){

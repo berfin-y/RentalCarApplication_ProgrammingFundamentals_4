@@ -7,8 +7,8 @@ public abstract class Individual extends Customer implements IIndividual {
     public Individual(){
         super();
     }
-    public Individual(int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
-        super(numberOfDays, carModel, carModelYear, modelBasePrice);
+    public Individual(int numberOfDays, String carModel, int carModelYear, double modelBasePrice, double discount){
+        super(numberOfDays, carModel, carModelYear, modelBasePrice,discount);
     }
     
 
