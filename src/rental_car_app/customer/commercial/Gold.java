@@ -11,7 +11,7 @@ public class Gold extends Commercial{
 
     public Gold(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(id, numberOfDays, carModel, carModelYear, modelBasePrice);
-        super.setDiscount(0.2);
+        super.setDiscount(0.25);
     }
     public Gold(Gold gold){
         this(new CustomerId<String>(gold.getId()), gold.getNumberOfDays(), gold.getCarModel(), gold.getCarModelYear(), gold.getModelBasePrice());
@@ -37,11 +37,6 @@ public class Gold extends Commercial{
 
     public String toString(){
         return super.toString();
-    }
-
-    @Override
-    public double calculatePrice() {
-        return 0;
     }
 
     @Override

@@ -46,11 +46,6 @@ public class Member  extends Individual {
     }
 
     @Override
-    public double calculatePrice() {
-        return 0;
-    }
-
-    @Override
     public boolean checkId() {
 
         try{

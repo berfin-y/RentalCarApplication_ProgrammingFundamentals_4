@@ -1,5 +1,7 @@
 package rental_car_app.customer.commercial;
 
+import java.util.Formatter;
+
 import rental_car_app.customer.Customer;
 import rental_car_app.customer.CustomerId;
 
@@ -44,8 +46,23 @@ public abstract class Commercial extends Customer implements ICommercial{
     }
 
     @Override
-    public abstract double calculatePrice();
-
+    public double calculatePrice() {
+        double modelYearRatio = 0;
+        if (getCarModelYear()>2021) {
+        	modelYearRatio = 1;
+        }
+        else if (getCarModelYear()>=2020 && getCarModelYear()<=2021) {
+        	modelYearRatio = 0.95;
+        }
+        else {
+        	modelYearRatio = 0.9;
+        }
+        double dailyPrice = getModelBasePrice()*modelYearRatio;
+        double rentalPrice = (dailyPrice*getNumberOfDays())*(1-getDiscount())*30;
+        String.format("%.2f", rentalPrice);
+        setRentalPrice(rentalPrice);
+        return rentalPrice;
+    }
     @Override
     public abstract boolean checkId();
 }

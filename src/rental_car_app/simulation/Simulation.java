@@ -23,8 +23,18 @@ public class Simulation {
     public void simulateRentals() {
     	printStatistics();
     	generateRentalCodes();
+    	calculateRentalPrices();
     	printIndividualRentals();
     	printCommercialRentals();
+    }
+    
+    public void calculateRentalPrices() {
+    	for (IIndividual individual:individuals) {
+    		individual.calculatePrice();
+    	}
+    	for (ICommercial commercial:commercials) {
+    		commercial.calculatePrice();
+    	}
     }
     
     private void generateRentalCodes() {
@@ -131,7 +141,7 @@ public class Simulation {
     private void printCommercialRentals() {
     	System.out.println("Commercial Rentals:");
     	System.out.printf("%-5s%-15s%-15s%-18s%-18s%-22s%-15s%-18s\n","No","Rental Code",
-				"Customer ID","Customer Type","Number of Days","Car Model","Model Year","Rental Price");
+				"Customer ID","Customer Type","Number of Months","Car Model","Model Year","Rental Price");
     	for(int i=0;i<commercials.size();i++) {
     		String customerType = "";
     		if (Character.toString(commercials.get(i).getId().charAt(0)).equals("S")) {

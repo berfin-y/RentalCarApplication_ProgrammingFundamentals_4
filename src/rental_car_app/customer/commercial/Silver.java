@@ -7,7 +7,7 @@ public class Silver extends Commercial{
 
     public Silver(){
         this(new CustomerId<String>("S0000000"), 0, "", 0,0);
-        super.setDiscount(0.3);
+        super.setDiscount(0.2);
     }
 
     public Silver(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
@@ -37,11 +37,6 @@ public class Silver extends Commercial{
 
     public String toString(){
         return super.toString();
-    }
-
-    @Override
-    public double calculatePrice() {
-        return 0;
     }
 
     @Override

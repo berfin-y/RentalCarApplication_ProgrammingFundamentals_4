@@ -7,7 +7,7 @@ public class Platinum extends Commercial{
 
     public Platinum(){
         this(new CustomerId<String>("P0000000"), 0, "", 0,0);
-        super.setDiscount(0.25);
+        super.setDiscount(0.3);
     }
 
     public Platinum(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
@@ -36,11 +36,6 @@ public class Platinum extends Commercial{
     }
     public String toString(){
         return super.toString();
-    }
-
-    @Override
-    public double calculatePrice() {
-        return 0;
     }
 
     @Override

@@ -46,11 +46,6 @@ public class NonMember extends Individual {
     }
 
     @Override
-    public double calculatePrice() {
-        return 0;
-    }
-
-    @Override
     public boolean checkId() {
         try{
             if (this.getId().toString().length() != 11){
