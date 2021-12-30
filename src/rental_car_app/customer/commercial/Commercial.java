@@ -1,7 +1,5 @@
 package rental_car_app.customer.commercial;
 
-import java.util.Formatter;
-
 import rental_car_app.customer.Customer;
 import rental_car_app.customer.CustomerId;
 
@@ -59,7 +57,6 @@ public abstract class Commercial extends Customer implements ICommercial{
         }
         double dailyPrice = getModelBasePrice()*modelYearRatio;
         double rentalPrice = (dailyPrice*getNumberOfDays())*(1-getDiscount())*30;
-        String.format("%.2f", rentalPrice);
         setRentalPrice(rentalPrice);
         return rentalPrice;
     }
