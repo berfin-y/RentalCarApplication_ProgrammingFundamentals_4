@@ -1,5 +1,7 @@
 package rental_car_app.customer;
 
+import java.util.HashMap;
+
 public abstract class Customer implements ICustomer {
 
     private double modelBasePrice;
@@ -9,7 +11,7 @@ public abstract class Customer implements ICustomer {
     private int rentalCode;
     private double discount;
     private double rentalPrice;
-
+    private HashMap<Integer, Double> modelYearRatioMap;
     public Customer(){
         this(0,"",0,0.0,0.0);
     }
@@ -20,6 +22,8 @@ public abstract class Customer implements ICustomer {
         this.carModelYear = carModelYear;
         this.modelBasePrice = modelBasePrice;
         this.discount = discount;
+        modelYearRatioMap = new HashMap<Integer, Double>();
+        createModelYearRatio();
     }
 
     public Customer(Customer customer){
@@ -68,6 +72,9 @@ public abstract class Customer implements ICustomer {
 
     }
 
+    public HashMap<Integer, Double> getModelYearRatioMap() {
+        return new HashMap<>(modelYearRatioMap);
+    }
 
     @Override
     public abstract double calculatePrice();
@@ -91,6 +98,15 @@ public abstract class Customer implements ICustomer {
     public void setRentalPrice(double rentalPrice) {
     	this.rentalPrice=rentalPrice;
     }
-    
+
+    private void createModelYearRatio(){
+        modelYearRatioMap.put(2017, 0.9);
+        modelYearRatioMap.put(2018, 0.9);
+        modelYearRatioMap.put(2019, 0.9);
+        modelYearRatioMap.put(2020, 0.95);
+        modelYearRatioMap.put(2021, 0.95);
+        modelYearRatioMap.put(2022, 1.0);
+    }
+
     
 }

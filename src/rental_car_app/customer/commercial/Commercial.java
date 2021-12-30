@@ -46,18 +46,8 @@ public abstract class Commercial extends Customer implements ICommercial{
 
     @Override
     public double calculatePrice() {
-        double modelYearRatio = 0;
-        if (getCarModelYear()>2021) {
-        	modelYearRatio = 1;
-        }
-        else if (getCarModelYear()>=2020 && getCarModelYear()<=2021) {
-        	modelYearRatio = 0.95;
-        }
-        else {
-        	modelYearRatio = 0.9;
-        }
-        double dailyPrice = getModelBasePrice()*modelYearRatio;
-        double rentalPrice = (dailyPrice*getNumberOfDays())*(1-getDiscount())*30;
+        double dailyPrice = getModelBasePrice()* getModelYearRatioMap().get(getCarModelYear());
+        double rentalPrice = (dailyPrice*getNumberOfDays()*30)*(1-getDiscount());
         setRentalPrice(rentalPrice);
         return rentalPrice;
     }

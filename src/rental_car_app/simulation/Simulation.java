@@ -9,6 +9,7 @@ import rental_car_app.customer.commercial.Silver;
 import rental_car_app.customer.individual.IIndividual;
 import rental_car_app.fileIO.FileManagement;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Simulation {
@@ -16,6 +17,7 @@ public class Simulation {
     private ArrayList<ICommercial> commercials;
     private ArrayList<IIndividual> individuals;
     private ArrayList<Integer> rentalCodes;
+	private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public Simulation(){
         fileManagement = new FileManagement();
@@ -120,7 +122,7 @@ public class Simulation {
     private int calculateCommercialMembers(String s, ArrayList<ICommercial> commercials) {
     	int numOfMembers = 0;
     	for(ICommercial i: commercials) {
-    		if(i.getId().toString().startsWith(s)) {
+    		if(i.getId().startsWith(s)) {
     			numOfMembers++;
     		}
     	}
@@ -138,7 +140,7 @@ public class Simulation {
     		}
     		System.out.printf("%-5s%-15s%-15s%-18s%-18s%-22s%-15s%-18s\n",(i+1),individuals.get(i).getRentalCode(),
     				individuals.get(i).getId(),memberStatus,individuals.get(i).getNumberOfDays(),individuals.get(i).getCarModel(),
-    				individuals.get(i).getCarModelYear(),individuals.get(i).getRentalPrice());
+    				individuals.get(i).getCarModelYear(),df.format(individuals.get(i).getRentalPrice()));
     	}
     }
     
@@ -147,8 +149,8 @@ public class Simulation {
     	System.out.printf("%-5s%-15s%-15s%-18s%-18s%-22s%-15s%-18s\n","No","Rental Code",
 				"Customer ID","Customer Type","Number of Months","Car Model","Model Year","Rental Price");
     	int i = 0;
+		String customerType = "";
     	for(ICommercial commercial:commercials) {
-    		String customerType = "";
     		if (commercial instanceof Silver) {
     			customerType = "Silver";
     		}
@@ -160,7 +162,7 @@ public class Simulation {
     		}
     		System.out.printf("%-5s%-15s%-15s%-18s%-18s%-22s%-15s%-18s\n",(i+1),commercials.get(i).getRentalCode(),
     				commercials.get(i).getId(),customerType,commercials.get(i).getNumberOfDays(),commercials.get(i).getCarModel(),
-    				commercials.get(i).getCarModelYear(),commercials.get(i).getRentalPrice());
+    				commercials.get(i).getCarModelYear(),df.format(commercials.get(i).getRentalPrice()));
     		i++;
     	}
     }
