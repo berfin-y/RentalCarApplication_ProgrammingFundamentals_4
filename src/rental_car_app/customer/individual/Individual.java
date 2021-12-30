@@ -1,7 +1,5 @@
 package rental_car_app.customer.individual;
 
-import java.util.Formatter;
-
 import rental_car_app.customer.Customer;
 
 
@@ -33,7 +31,7 @@ public abstract class Individual extends Customer implements IIndividual {
     }
     
     public boolean isMember() {
-    	if (this.getId().toString().startsWith("M")) {
+    	if (this instanceof Member) {
     		return true;
     	}
     	return false;
