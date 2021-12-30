@@ -51,7 +51,6 @@ public abstract class Individual extends Customer implements IIndividual {
         }
         double dailyPrice = getModelBasePrice()*modelYearRatio;
         double rentalPrice = (dailyPrice*getNumberOfDays())*(1-getDiscount());
-        rentalPrice = Double.parseDouble(String.format("%.2f", rentalPrice));
         setRentalPrice(rentalPrice);
         return rentalPrice;
     }
