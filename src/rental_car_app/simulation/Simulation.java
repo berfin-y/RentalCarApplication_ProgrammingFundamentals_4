@@ -1,7 +1,11 @@
 package rental_car_app.simulation;
 
 import rental_car_app.customer.ICustomer;
+import rental_car_app.customer.commercial.Commercial;
+import rental_car_app.customer.commercial.Gold;
 import rental_car_app.customer.commercial.ICommercial;
+import rental_car_app.customer.commercial.Platinum;
+import rental_car_app.customer.commercial.Silver;
 import rental_car_app.customer.individual.IIndividual;
 import rental_car_app.fileIO.FileManagement;
 
@@ -56,15 +60,15 @@ public class Simulation {
     	}
     	
     	for (ICommercial commercial:commercials) {
-    		if (Character.toString(commercial.getId().charAt(0)).equals("S")) {
+    		if (commercial instanceof Silver) {
     			rentalCodes.set(2, rentalCodes.get(2)+1);
     			commercial.setRentalCode(rentalCodes.get(2));
     		}
-    		else if (Character.toString(commercial.getId().charAt(0)).equals("G")) {
+    		else if (commercial instanceof Gold) {
     			rentalCodes.set(3, rentalCodes.get(3)+1);
     			commercial.setRentalCode(rentalCodes.get(3));
     		}
-    		else if (Character.toString(commercial.getId().charAt(0)).equals("P")) {
+    		else if (commercial instanceof Platinum) {
     			rentalCodes.set(4, rentalCodes.get(4)+1);
     			commercial.setRentalCode(rentalCodes.get(4));
     		}
@@ -142,20 +146,22 @@ public class Simulation {
     	System.out.println("Commercial Rentals:");
     	System.out.printf("%-5s%-15s%-15s%-18s%-18s%-22s%-15s%-18s\n","No","Rental Code",
 				"Customer ID","Customer Type","Number of Months","Car Model","Model Year","Rental Price");
-    	for(int i=0;i<commercials.size();i++) {
+    	int i = 0;
+    	for(ICommercial commercial:commercials) {
     		String customerType = "";
-    		if (Character.toString(commercials.get(i).getId().charAt(0)).equals("S")) {
+    		if (commercial instanceof Silver) {
     			customerType = "Silver";
     		}
-    		else if (Character.toString(commercials.get(i).getId().charAt(0)).equals("G")) {
+    		else if (commercial instanceof Gold) {
     			customerType = "Gold";
     		}
-    		else if (Character.toString(commercials.get(i).getId().charAt(0)).equals("P")) {
+    		else if (commercial instanceof Platinum) {
     			customerType = "Platinum";
     		}
     		System.out.printf("%-5s%-15s%-15s%-18s%-18s%-22s%-15s%-18s\n",(i+1),commercials.get(i).getRentalCode(),
     				commercials.get(i).getId(),customerType,commercials.get(i).getNumberOfDays(),commercials.get(i).getCarModel(),
     				commercials.get(i).getCarModelYear(),commercials.get(i).getRentalPrice());
+    		i++;
     	}
     }
 
