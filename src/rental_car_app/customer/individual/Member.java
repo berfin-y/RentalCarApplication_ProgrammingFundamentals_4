@@ -13,6 +13,7 @@ public class Member  extends Individual {
 
     public Member(CustomerId<String> id, int numberOfDays, String carModel, int carModelYear, double modelBasePrice){
         super(numberOfDays, carModel, carModelYear, modelBasePrice);
+        super.setDiscount(0.1);
         this.id = id;
     }
     public Member(Member member){
