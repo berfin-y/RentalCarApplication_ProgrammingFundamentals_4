@@ -5,7 +5,8 @@ import rental_car_app.customer_id_exception.CustomerIdException;
 
 public class NonMember extends Individual {
     private CustomerId<Long> id;
-
+    
+    //constructors
     public NonMember(){
         this(new CustomerId<Long>(00000000000L),0,"",0,0.0,0.0);
     }
@@ -21,7 +22,8 @@ public class NonMember extends Individual {
     public NonMember(String[] info){
         this(new CustomerId<Long>(Long.parseLong(info[0])), Integer.parseInt(info[1]), info[2], Integer.parseInt(info[3]), Double.parseDouble(info[4]),0.0);
     }
-
+    
+    //getter method
     public Long getId(){
         return this.id.getId();
     }
@@ -40,12 +42,11 @@ public class NonMember extends Individual {
         }
     }
 
-    @Override
     public String toString() {
         return this.id.toString() + "     " + super.toString();
     }
 
-    @Override
+    //checkId method is overridden for individual non-member customers
     public boolean checkId() {
         try{
             if (this.getId().toString().length() != 11){

@@ -9,9 +9,11 @@ import java.util.Scanner;
 public class FileIO implements Serializable {
 
     private final String FILE_NAME = "HW4_Rentals.csv";
-
+    
+    //default constructor
     public FileIO() { }
-
+    
+    //reads the file, holds the lines in an arraylist
     public ArrayList<String> readFile() {
         ArrayList<String> lines = new ArrayList<String>();
         try {

@@ -6,7 +6,8 @@ import rental_car_app.customer.CustomerId;
 public abstract class Commercial extends Customer implements ICommercial{
 
     private CustomerId<String> id;
-
+    
+    //default constructor, discount is set as 0%
     public Commercial(){
         this(new CustomerId<String>(),0,"",0,0.0,0.0);
     }
@@ -20,7 +21,8 @@ public abstract class Commercial extends Customer implements ICommercial{
         this(commercial.id,commercial.getNumberOfDays(),commercial.getCarModel(),
         		commercial.getCarModelYear(),commercial.getModelBasePrice(),commercial.getDiscount());
     }
-
+    
+    //getter method
     public String getId(){
         return this.id.getId();
     }
@@ -43,14 +45,17 @@ public abstract class Commercial extends Customer implements ICommercial{
     public String toString(){
         return this.id.toString() + "     " + super.toString();
     }
-
-    @Override
+    
+    //calculate price is overridden for commercial rentals
     public double calculatePrice() {
+    	//daily price is evaluated
         double dailyPrice = getModelBasePrice()* getModelYearRatioMap().get(getCarModelYear());
+        //rental price is evaluated
         double rentalPrice = (dailyPrice*getNumberOfDays()*30)*(1-getDiscount());
+        //rental price is set
         setRentalPrice(rentalPrice);
         return rentalPrice;
     }
-    @Override
+    
     public abstract boolean checkId();
 }

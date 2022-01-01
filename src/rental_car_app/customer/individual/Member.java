@@ -6,7 +6,8 @@ import rental_car_app.customer_id_exception.CustomerIdException;
 public class Member  extends Individual {
 
     private CustomerId<String> id;
-
+    
+    //constructors
     public Member(){
         this(new CustomerId<String>("M0000000000"),0,"",0,0.0,0.1);
     }
@@ -36,7 +37,7 @@ public class Member  extends Individual {
                     (this.getModelBasePrice() == otherMembership.getModelBasePrice());
         }
     }
-    @Override
+    
     public String toString() {
         return this.id.toString() + "     " + super.toString();
     }
@@ -45,7 +46,7 @@ public class Member  extends Individual {
         return this.id.getId();
     }
 
-    @Override
+    //checkId method is overridden for individual members
     public boolean checkId() {
 
         try{

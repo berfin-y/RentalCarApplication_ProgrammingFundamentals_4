@@ -4,6 +4,8 @@ import rental_car_app.customer.Customer;
 
 
 public abstract class Individual extends Customer implements IIndividual {
+	
+	//constructors
     public Individual(){
         super();
     }
@@ -11,7 +13,14 @@ public abstract class Individual extends Customer implements IIndividual {
         super(numberOfDays, carModel, carModelYear, modelBasePrice,discount);
     }
     
-
+    //checks whether the individual customer is a member or not
+    public boolean isMember() {
+    	if (this instanceof Member) {
+    		return true;
+    	}
+    	return false;
+    }
+    
     public boolean equals(Object other){
         if (other == null){
             return false;
@@ -28,22 +37,15 @@ public abstract class Individual extends Customer implements IIndividual {
 
     public String toString(){
         return super.toString();
-    }
-    
-    public boolean isMember() {
-    	if (this instanceof Member) {
-    		return true;
-    	}
-    	return false;
-    }
+    }  
 
-    @Override
+    //calculatePrice method is overridden for the individdual customers
     public double calculatePrice() {
         double dailyPrice = getModelBasePrice()*getModelYearRatioMap().get(getCarModelYear());
         double rentalPrice = (dailyPrice*getNumberOfDays())*(1-getDiscount());
         setRentalPrice(rentalPrice);
         return rentalPrice;
     }
-    @Override
+    
     public abstract boolean checkId();
 }

@@ -4,7 +4,8 @@ import rental_car_app.customer.CustomerId;
 import rental_car_app.customer_id_exception.CustomerIdException;
 
 public class Platinum extends Commercial{
-
+	
+	//constructors
     public Platinum(){
         this(new CustomerId<String>("P0000000"), 0, "", 0,0,0.3);
     }
@@ -38,7 +39,7 @@ public class Platinum extends Commercial{
         return super.toString();
     }
 
-    @Override
+    //checkId method is overridden for Platinum type of commercial customers
     public boolean checkId() {
         try{
             if (this.getId().length() != 8){

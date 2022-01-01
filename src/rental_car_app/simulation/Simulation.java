@@ -1,7 +1,5 @@
 package rental_car_app.simulation;
 
-import rental_car_app.customer.ICustomer;
-import rental_car_app.customer.commercial.Commercial;
 import rental_car_app.customer.commercial.Gold;
 import rental_car_app.customer.commercial.ICommercial;
 import rental_car_app.customer.commercial.Platinum;
@@ -13,12 +11,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Simulation {
+	
     private FileManagement fileManagement;
     private ArrayList<ICommercial> commercials;
     private ArrayList<IIndividual> individuals;
     private ArrayList<Integer> rentalCodes;
 	private static final DecimalFormat df = new DecimalFormat("0.00");
 
+	//default constructor
     public Simulation(){
         fileManagement = new FileManagement();
         commercials = fileManagement.getCommercials();
@@ -26,6 +26,7 @@ public class Simulation {
         rentalCodes = new ArrayList<Integer>();
     }
     
+    //calls needed methods to manage activities
     public void simulateRentals() {
     	printStatistics();
     	generateRentalCodes();
@@ -34,6 +35,7 @@ public class Simulation {
     	printCommercialRentals();
     }
     
+    //calculates rental prices of the object in lists individuals and commercials
     public void calculateRentalPrices() {
     	for (IIndividual individual:individuals) {
     		individual.calculatePrice();
@@ -43,6 +45,7 @@ public class Simulation {
     	}
     }
     
+    //generates and sets rental codes for all rentals
     private void generateRentalCodes() {
     	rentalCodes.add(1000000);//0--nonmember
     	rentalCodes.add(2000000);//1--member
@@ -93,6 +96,7 @@ public class Simulation {
     	System.out.println("Total number of rentals of platinum commercial customers: "+calculateCommercialMembers("P",commercials));
     }
     
+	//calculates total number of commercial rental-months
     private int calculateCommercialRentalMonth() {
     	int commercialRentalMonth = 0;
     	for(ICommercial i: commercials) {
@@ -101,6 +105,7 @@ public class Simulation {
     	return commercialRentalMonth;
     }
     
+    //calculates total number of individual rental-days
     private int calculateIndividualRentalDay() {
     	int individualRentalDay = 0;
     	for(IIndividual i: individuals) {
@@ -109,24 +114,26 @@ public class Simulation {
     	return individualRentalDay;
     }
     
+    //calculates the total number of rentals of individual members
     private int calculateIndividualMembers() {
-    	int numOfMembers = 0;
+    	int numOfRentals = 0;
     	for (IIndividual i:individuals) {
-    		if (i.getId().toString().startsWith("M")) {
-    			numOfMembers++;
+    		if (i.isMember()) {
+    			numOfRentals++;
     		}
     	}
-    	return numOfMembers;
+    	return numOfRentals;
     }
     
+    //calculates the total number of rentals of commercial members
     private int calculateCommercialMembers(String s, ArrayList<ICommercial> commercials) {
-    	int numOfMembers = 0;
+    	int numOfRentals = 0;
     	for(ICommercial i: commercials) {
     		if(i.getId().startsWith(s)) {
-    			numOfMembers++;
+    			numOfRentals++;
     		}
     	}
-    	return numOfMembers;
+    	return numOfRentals;
     }
     
     private void printIndividualRentals() {

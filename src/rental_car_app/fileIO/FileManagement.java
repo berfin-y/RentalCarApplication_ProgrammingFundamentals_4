@@ -17,7 +17,8 @@ public class FileManagement {
     private ArrayList<String> objectsList;
     private ArrayList<IIndividual> individuals;
     private ArrayList<ICommercial> commercials;
-
+    
+    //default constructor
     public FileManagement(){
         fileIo = new FileIO();
         individuals = new ArrayList<>();
@@ -29,7 +30,8 @@ public class FileManagement {
         ArrayList<String> lineList = fileIo.readFile();
         objectsList = new ArrayList<>(lineList);
     }
-
+    
+    //creates the objects according to the information read from the file
     private void createObject(){
         for (String object: objectsList){
             String[] info = object.split(",");
@@ -37,6 +39,7 @@ public class FileManagement {
         }
     }
 
+    //decide whic type of object to create
     private void decideType(String[] info) {
         switch (info[0]) {
             case "Individual":

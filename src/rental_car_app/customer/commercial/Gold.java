@@ -4,7 +4,8 @@ import rental_car_app.customer.CustomerId;
 import rental_car_app.customer_id_exception.CustomerIdException;
 
 public class Gold extends Commercial{
-
+	
+	//constructors
     public Gold(){
         this(new CustomerId<String>("G0000000"),0,"",0,0,0.0);
     }
@@ -40,7 +41,7 @@ public class Gold extends Commercial{
         return super.toString();
     }
 
-    @Override
+    //checkId method is overridden for the gold type of commercial members
     public boolean checkId()
     {
         try{
